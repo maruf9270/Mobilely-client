@@ -70,6 +70,8 @@ const Login = () => {
         signWithGoogle()
         .then(res=>{
             toast.success("Logged in successfully")
+            navigate(from,{replace: true})
+          
         })
         .catch(err=>{
             toast.error(err.message)

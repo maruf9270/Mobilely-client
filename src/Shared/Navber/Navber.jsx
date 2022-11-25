@@ -1,5 +1,6 @@
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import React, { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../../Contexts/AuthContexts";
 
@@ -49,11 +50,11 @@ const Navber = () => {
                 {user?.email}
               </span>
             </Dropdown.Header>
-            <Dropdown.Item>Dashboard</Dropdown.Item>
+            <Link to={'/dashboard'}><Dropdown.Item >Dashboard</Dropdown.Item></Link>
             <Dropdown.Item>Settings</Dropdown.Item>
             <Dropdown.Item>Earnings</Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item><button onClick={handlesignout}>Sign Out</button></Dropdown.Item>
+            <Dropdown.Item  onClick={handlesignout}>Sign Out</Dropdown.Item>
           </Dropdown>
           <Navbar.Toggle /></>
           : ""
@@ -63,10 +64,17 @@ const Navber = () => {
           <Navbar.Link href="/navbars" active={true}>
             Home
           </Navbar.Link>
-          <Navbar.Link href="/navbars">About</Navbar.Link>
+          
+          <Link to={"/dashboard/addproduct"}><Navbar.Link>Add Product</Navbar.Link></Link>
           <Navbar.Link href="/navbars">Services</Navbar.Link>
           <Navbar.Link href="/navbars">Pricing</Navbar.Link>
           <Navbar.Link href="/navbars">Contact</Navbar.Link>
+          <Navbar.Link>  <label
+              htmlFor="dashboardDrawer"
+              className="btn btn-primary drawer-button lg:hidden"
+            >
+              Open drawer
+            </label></Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </div>

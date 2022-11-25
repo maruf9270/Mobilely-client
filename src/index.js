@@ -6,11 +6,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthContexts from './Contexts/AuthContexts';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AuthContexts>
+   <QueryClientProvider client={queryClient}>
+   <AuthContexts>
       <ToastContainer
       position="top-center"
       autoClose={5000}
@@ -24,6 +27,7 @@ root.render(
       theme="light"/>
     <App />
     </AuthContexts>
+   </QueryClientProvider>
   </React.StrictMode>
 );
 
