@@ -16,7 +16,7 @@ const Deletconfermation = ({setDeleteData,deleteUser,DeletData}) => {
             Varifying Confarmation
             </h3>
             <p className="py-4">
-              Are You sure you want to Variefy <span className="text-xl font-bold text-blue-600">{DeletData?.name}</span> ?<br />
+              Are You sure you want to Delete <span className="text-xl font-bold text-red-700">{DeletData?.name}</span> ?<br />
   
             </p>
             <div className="modal-action">
