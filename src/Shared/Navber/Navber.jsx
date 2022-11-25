@@ -60,7 +60,7 @@ const Navber = () => {
           : ""
          }
         </div>
-        <Navbar.Collapse>
+        <Navbar.Collapse className="z-50">
          <NavLink to={'/'}> <Navbar.Link>
             Home
           </Navbar.Link></NavLink>

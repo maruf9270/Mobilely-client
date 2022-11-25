@@ -11,7 +11,7 @@ const Homepage = () => {
     return (
         <div className='max-w-screen-xl mx-auto'>
 
-           <div className='grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7 justify-center justify-items-center'>
+           <div className='grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7 justify-center justify-items-center z-10'>
              {/* brands section */}
              {
                 brands?.map(b=> <BrandsCard key={b._id} data={b}></BrandsCard>)

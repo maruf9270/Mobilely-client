@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "../Home/HomeLayout/HomeLayout";
 import Homepage from "../Home/HomeLayout/HomePage/Homepage";
+import Products from "../Home/HomeLayout/HomePage/Products/Products";
 import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../Pages/Dashboard/All_sellsers/AllSellers";
@@ -30,7 +31,9 @@ export const router = createBrowserRouter([
                 ,element:<Signup></Signup>
             },
             {
-                
+                path:"/brands/:name"
+                ,element:<Products></Products>,
+                loader: ({params})=>fetch(`${process.env.REACT_APP_server}/brand?name=${params.name}`)
             }
         ]
     },

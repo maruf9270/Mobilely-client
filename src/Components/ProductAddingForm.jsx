@@ -73,6 +73,7 @@ const ProductAddingForm = () => {
                     email: user?.email
                 },
                 brand,
+                description,
                 name,
                 price,
                 mobile,
