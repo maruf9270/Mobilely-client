@@ -2,11 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../../../Contexts/AuthContexts';
 import ProductCard from './ProductCard';
-import smallModal from '../../../Components/smallModal'
 import SmallSpinner from '../../../Components/SmallSpinner';
 import Smodal from '../../../Components/Smodal';
 import { toast } from 'react-toastify';
 import DeletConfirm from './Components/DeletConfirm';
+import EditModal from './Components/EditModal';
 
 const MyProducts = () => {
     const {user} = useContext(UserContext)
@@ -69,7 +69,9 @@ const MyProducts = () => {
             toast.error("Something went wrong try again letter")
         })
     }
-    console.log(deleteID);
+    
+    // Handeling product Edit
+    const [editProduct,setEditProduct] = useState(null)
 
 
     return (
@@ -79,6 +81,7 @@ const MyProducts = () => {
             }
            <Smodal setPid={setPid} handleAdvertisement={handleAdvertisement}></Smodal>
            <DeletConfirm setdeleteID={setdeleteID} handleDelete={handleDelete} ></DeletConfirm>
+           <EditModal></EditModal>
 
         </div>
     );

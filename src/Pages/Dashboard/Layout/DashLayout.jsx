@@ -20,11 +20,21 @@ const DashLayout = () => {
             <label htmlFor="dashboardDrawer" className="drawer-overlay"></label>
             <ul className="menu p-4 w-80 rounded-md text-base-content bg-slate-600 ">
               {/* <!-- Sidebar content here --> */}
+             
+              <li>
+               <NavLink to={'/dashboard'}>My Products</NavLink>
+              </li>
               <li>
                 <NavLink to={'/dashboard/addproduct'}>Add Product</NavLink>
               </li>
               <li>
-               <NavLink to={'/dashboard/my_products'}>My Products</NavLink>
+                <NavLink to={'/dashboard/allsellers'}>All Sellers</NavLink>
+              </li>
+              <li>
+                <NavLink to={'/dashboard/allbuyers'}>All buyers</NavLink>
+              </li>
+              <li>
+                <NavLink to={'/dashboard/reported_items'}>Reported Items</NavLink>
               </li>
             </ul>
           </div>
