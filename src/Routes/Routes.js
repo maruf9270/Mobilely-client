@@ -7,7 +7,6 @@ import AllSellers from "../Pages/Dashboard/All_sellsers/AllSellers";
 import DashLayout from "../Pages/Dashboard/Layout/DashLayout";
 import MyProducts from "../Pages/Dashboard/My_Products/MyProducts";
 import ReportedItems from "../Pages/Dashboard/Reported_items/ReportedItems";
-import Reported_items from "../Pages/Dashboard/Reported_items/ReportedItems";
 import Error from "../Pages/Error/Error";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/SignUp/Signup";
@@ -29,6 +28,9 @@ export const router = createBrowserRouter([
             {
                 path:'/signup'
                 ,element:<Signup></Signup>
+            },
+            {
+                
             }
         ]
     },

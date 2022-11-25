@@ -1,8 +1,10 @@
-import { FlagIcon, RssIcon } from "@heroicons/react/20/solid";
+import { CalendarIcon, FlagIcon, RssIcon } from "@heroicons/react/20/solid";
 import React, { useContext, useEffect, useState } from "react";
+import DatePicker from 'react-datepicker'
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../Contexts/AuthContexts";
+import format from 'date-fns/format'
 
 const ProductAddingForm = () => {
     const {user} = useContext(UserContext)
@@ -29,7 +31,7 @@ const ProductAddingForm = () => {
         .then(res=>res.json())
         .then(data=>{
             toast.success("Product added successfully")
-            navigate('/dashboard/my_products')
+            navigate('/dashboard')
         })
         console.log(props);
      }
@@ -46,6 +48,10 @@ const ProductAddingForm = () => {
         const image = form.image.files[0];
         const description = form.description.value
         const year = form.purchase.value
+        const resellPrice = form.resellPrice.value
+        const used = form.used.value;
+        const date = new Date()
+        const AddDate = format( date,"PP")
         console.log(name,price,condition,mobile,address,image,description);
         
         // Sending the image data to the server
@@ -75,8 +81,11 @@ const ProductAddingForm = () => {
                 year,
                 full_image,
                 thumbnail,
+                resellPrice,
+                AddDate,
                 advertised: false,
-                sold: false
+                sold: false,
+                used
             }
             send(product)
         })
@@ -120,21 +129,47 @@ const ProductAddingForm = () => {
             <div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Price</span>
+                  <span className="label-text">Original Price</span>
                 </label>
                 <input
                   type="number"
-                  placeholder="Product price"
+                  placeholder="Purchasing price"
                   className="input input-bordered w-full "
                   name="price"
                   required
                 />
               </div>
             </div>
-            {/* condition of the mobile */}
+            
 
-            <div>
-              <div className="form-control md:min-w-[200px] mx-4">
+           <div>
+           <div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Resell Price</span>
+                </label>
+                <input
+                  type="number"
+                  placeholder="Resell price"
+                  className="input input-bordered w-full "
+                  name="resellPrice"
+                  required
+                />
+              </div>
+            </div>
+           </div>
+
+
+          </div>
+
+
+
+
+          <div className="flex flex-row ">
+
+{/* condition of the mobile */}
+        <div >
+              <div className="form-control  mx-4">
                 <label className="label">
                   <span className="label-text">Condition</span>
                 </label>
@@ -148,8 +183,8 @@ const ProductAddingForm = () => {
                 </select>
               </div>
             </div>
-          </div>
-          <div>
+
+
             <div className="form-control ">
               <label className="label">
                 <span className="label-text">Mobile</span>
@@ -177,7 +212,7 @@ const ProductAddingForm = () => {
             name="address"
             required
           />
-        </div>
+      </div>
 
         {/*//! image section starts from here */}
        <div className="flex">
@@ -207,6 +242,33 @@ const ProductAddingForm = () => {
                 </div>
             </div>
        </div>
+
+
+
+       <div>
+                    <div className="form-control w-full ">
+                <label className="label">
+                    <span className="label-text">Used for</span>
+                </label>
+                <input
+                    type="number"
+                    placeholder="Used Year"
+                    className="input input-bordered w-full "
+                    name="used"
+                    required
+                />
+                </div>
+            </div>
+       {/* <div>
+       <div className='shadow-md rounded-md my-2 p-3 flex justify-between items-center'>
+                <div>
+                  <p className='block text-sm text-gray-500'>From</p>
+                  <DatePicker selected={new Date()} className='w-2/3' />
+                </div>
+
+                <CalendarIcon className='h5 w-5' />
+              </div>
+       </div> */}
 
         {/* text area section starts */}
         <div className="form-control">

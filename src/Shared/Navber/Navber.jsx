@@ -61,9 +61,9 @@ const Navber = () => {
          }
         </div>
         <Navbar.Collapse>
-          <Navbar.Link href="/navbars" active={true}>
+         <NavLink to={'/'}> <Navbar.Link>
             Home
-          </Navbar.Link>
+          </Navbar.Link></NavLink>
           
           <Link to={"/dashboard/addproduct"}><Navbar.Link>Add Product</Navbar.Link></Link>
           <Navbar.Link href="/navbars">Services</Navbar.Link>
