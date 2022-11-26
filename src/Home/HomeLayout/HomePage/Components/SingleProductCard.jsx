@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Button, Card } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 
-const SingleProductCard = ({ data, setBook }) => {
+const SingleProductCard = ({ data, setBook,setReport, handleReport }) => {
   console.log(data);
   const [seller, setData] = useState([]);
   useEffect(() => {
@@ -55,7 +55,8 @@ const SingleProductCard = ({ data, setBook }) => {
             <span className="font-bold">Original Price:</span> {data.price}{" "}
             <br />
             <span className="font-bold">Used For:</span>{" "}
-            {data.used ? <>{data.used} years</> : "No Data"}
+            {data.used ? <>{data.used} years</> : "No Data"} <br/>
+            <label className="btn" htmlFor="reportConfirm" onClick={()=>setReport(data)}>Report</label>
           </div>
 
           <div>
