@@ -59,6 +59,7 @@ const Signup = () => {
         .then(res=>{
             
             props["image"] = photo
+            delete props.password;
             handleDatabase(props)
             
 
@@ -110,7 +111,7 @@ const Signup = () => {
         setSignUploading(true)
         const form = e.target;
         const name = form.name.value
-        const email = form.email.value;
+        const email = form.email.value.toLowerCase();
         const password = form.password.value;
         const option = form.option.value;
         const image = form.image.files[0];

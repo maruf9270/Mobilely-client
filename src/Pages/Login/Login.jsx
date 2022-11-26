@@ -4,6 +4,7 @@ import {toast } from 'react-toastify';
 import SmallSpinner from "../../Components/SmallSpinner";
 import Spinner from "../../Components/Spinner";
 import { UserContext } from "../../Contexts/AuthContexts";
+import useJwt from "../../Hooks/useJwt";
 
 const Login = () => {
 
@@ -20,6 +21,13 @@ const Login = () => {
     // Forgotten Mail
     const [forgoMail, setforgot] = useState('')
 
+    // Handling jwt after login
+    const [loggedMail, setLoggedMail] = useState(null)
+    const [token]= useJwt(loggedMail)
+   if(token){
+    navigate(from,{replace: true})
+   }
+
     // Handling email login 
     const login = (email,password,form) =>{
       setLogLoading(true)
@@ -27,8 +35,9 @@ const Login = () => {
         .then(res=>{
             toast.success("Logged in successfully")
             setLogLoading(false)
+             setLoggedMail(email)
             form.reset();
-            navigate(from,{replace: true})
+           
         })
         .catch(err=>{
             toast.error(err.message)
@@ -41,7 +50,7 @@ const Login = () => {
      
         e.preventDefault();
         const form = e.target;
-        const email = form.email.value;
+        const email = form.email.value.toLowerCase();
         const password = form.password.value;
         login(email,password,form)
         
