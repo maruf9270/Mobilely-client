@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const TableData = ({order}) => {
     const[ Productinfo,setPrductInfo ]= useState('')
@@ -10,9 +11,9 @@ const TableData = ({order}) => {
             setPrductInfo(data)
         })
     },[order,id])
-    console.log("From td",Productinfo);
+   const navigate = useNavigate()
     return (
-        <tr key={order._id}>
+        <tr className='hover'>
 
             <td>
           <div className="flex items-center space-x-3">
@@ -29,12 +30,17 @@ const TableData = ({order}) => {
         </td>
         <td>
           {
-            Productinfo?.price
+            Productinfo?.resellPrice ?   Productinfo?.resellPrice:"No Data"    
           }
+        </td>
+        <td>
+         {
+          Productinfo?.tid ?  <img src="https://i.ibb.co/FVdKVXP/Png-Item-1652005-1-1-1.png" className='w-12 ' alt="" />:"Unpaid"
+         }
         </td>
         
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <button className={`btn btn-primary btn-xs ${Productinfo?.tid  ? "btn-disabled text-black":""}`} onClick={()=>navigate(`/payment/${order._id}`)}>{Productinfo?.tid  ? "Paid":"Pay"}</button>
         </th>
 
             </tr>

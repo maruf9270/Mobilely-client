@@ -12,7 +12,8 @@ const OrderTable = ({myOrders}) => {
       <tr>
         
         <th>Name</th>
-        <th>Job</th>
+        <th>Price</th>
+        <th>Payment Status</th>
       
         <th></th>
       </tr>

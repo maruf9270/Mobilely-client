@@ -11,6 +11,7 @@ import ReportedItems from "../Pages/Dashboard/Reported_items/ReportedItems";
 import Error from "../Pages/Error/Error";
 import Login from "../Pages/Login/Login";
 import MyOrders from "../Pages/MyOrders/MyOrders";
+import Payment from "../Pages/Payment/Payment";
 import Signup from "../Pages/SignUp/Signup";
 
 export const router = createBrowserRouter([
@@ -39,6 +40,11 @@ export const router = createBrowserRouter([
             {
                 path:"/myorders",
                 element: <MyOrders></MyOrders>
+            },
+            {
+                path:'/payment/:oid',
+                element:<Payment></Payment>,
+                loader: ({params})=>fetch(`${process.env.REACT_APP_server}/order/${params.oid}`)
             }
         ]
     },
