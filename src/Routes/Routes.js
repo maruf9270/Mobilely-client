@@ -10,6 +10,7 @@ import MyProducts from "../Pages/Dashboard/My_Products/MyProducts";
 import ReportedItems from "../Pages/Dashboard/Reported_items/ReportedItems";
 import Error from "../Pages/Error/Error";
 import Login from "../Pages/Login/Login";
+import MyOrders from "../Pages/MyOrders/MyOrders";
 import Signup from "../Pages/SignUp/Signup";
 
 export const router = createBrowserRouter([
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
                 path:"/brands/:name"
                 ,element:<Products></Products>,
                 loader: ({params})=>fetch(`${process.env.REACT_APP_server}/brand?name=${params.name}`)
+            },
+            {
+                path:"/myorders",
+                element: <MyOrders></MyOrders>
             }
         ]
     },

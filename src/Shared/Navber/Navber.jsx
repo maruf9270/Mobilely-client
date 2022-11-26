@@ -66,7 +66,7 @@ const Navber = () => {
           </Navbar.Link></NavLink>
           
           <Link to={"/dashboard/addproduct"}><Navbar.Link>Add Product</Navbar.Link></Link>
-          <Navbar.Link href="/navbars">Services</Navbar.Link>
+         <NavLink to={'/myorders'}><Navbar.Link href="/navbars">My Orders</Navbar.Link></NavLink>
           <Navbar.Link href="/navbars">Pricing</Navbar.Link>
           <Navbar.Link href="/navbars">Contact</Navbar.Link>
           <Navbar.Link>  <label

@@ -36,8 +36,16 @@ const BookingConfirmModal = ({ book, setBook, ConfirmBooking }) => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
+           if(data.insertedId){
             toast.success("Booking a meet with sellr has been confirmed")
+            
+           }
+           else{
+            toast.error(data.message)
+           }
+           
+           setBook(null)
+           form.reset()
         })
         .catch(err=>{
             console.log(err);
@@ -45,6 +53,12 @@ const BookingConfirmModal = ({ book, setBook, ConfirmBooking }) => {
             setDisable(false)
         })
        
+    }
+
+    // Handling Cancel
+    const handleCalcel = () =>{
+        setDisable(false)
+        setBook(null)
     }
   return (
     <div>
@@ -124,7 +138,7 @@ const BookingConfirmModal = ({ book, setBook, ConfirmBooking }) => {
             <label
               htmlFor="bookingConfirm"
               className="btn"
-              onClick={() => setBook(null)}
+              onClick={handleCalcel}
             >
               Cancel
             </label>
