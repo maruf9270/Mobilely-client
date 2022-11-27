@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import BrandsCard from './Components/BrandsCard';
+import Caurosel from './Components/Caurosel';
 
 const Homepage = () => {
     const {data: brands=[]} = useQuery({
@@ -9,7 +10,10 @@ const Homepage = () => {
                     .then(res=>res.json())
     })
     return (
-        <div className='max-w-screen-xl mx-auto'>
+        <div className='max-w-screen-xl mx-auto my-14'>
+            <div className='mb-10'>
+                <Caurosel></Caurosel>
+            </div>
 
            <div className='grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7 justify-center justify-items-center z-10'>
              {/* brands section */}

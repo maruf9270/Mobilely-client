@@ -90,38 +90,64 @@ const BookingConfirmModal = ({ book, setBook, ConfirmBooking }) => {
           </p>
 
           <form action="" onSubmit={handleSumbit}>
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full ">
                         <label className="label">
                         <span className="label-text">Name</span> 
                         </label>
-                        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" defaultValue={user?.displayName} readOnly/>
+                        <input type="text" placeholder="Type here" className="input input-bordered w-full " defaultValue={user?.displayName} readOnly/>
                     </div>
 
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full">
                         <label className="label">
                         <span className="label-text">Email</span> 
                         </label>
-                        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" defaultValue={user?.email} readOnly/>
+                        <input type="text" placeholder="Type here" className="input input-bordered w-full " defaultValue={user?.email} readOnly/>
                     </div>
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full ">
                         <label className="label">
                         <span className="label-text">Phone Number</span> 
                         </label>
-                        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" name="phone"/>
+                        <input type="text" placeholder="Type here" className="input input-bordered w-full " name="phone" required/>
                     </div>
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full">
                         <label className="label">
                         <span className="label-text">Meeting Location</span> 
                         </label>
-                        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" name="location"/>
+                        <input type="text" placeholder="Type here" className="input input-bordered w-full " name="location" required/>
                     </div>
                     <div className="mt-4">
                         <h2 className="text-xl font-bold">
-                            Booking Info
+                            Poduct info
                         </h2>
                         <div>
-                            {/* PRosuct info will go here */}
+                        <span className="font-bold">Brand:</span>{" "}
+                        {book?.brand? <>{book?.brand}</> : "No Data"} <br/>
                         </div>
+                        <div>
+                        <span className="font-bold">Model Name:</span>{" "}
+                        {book?.name? <>{book?.name}</> : "No Data"} <br/>
+                        </div>
+                        <div>
+                        <span className="font-bold">Mobile:</span>{" "}
+                        {book?.mobile? <>{book?.mobile}</> : "No Data"} <br/>
+                        </div>
+                        <div>
+                        <span className="font-bold">Condition:</span>{" "}
+                        {book?.condition? <>{book?.condition}</> : "No Data"} <br/>
+                        </div>
+                        <div>
+                        <span className="font-bold">Brougth:</span>{" "}
+                        {book?.year? <>{book?.year}</> : "No Data"} <br/>
+                        </div>
+                        <div>
+                        <span className="font-bold">Original Price:</span>{" "}
+                        {book?.price? <>{book?.price}</> : "No Data"} <br/>
+                        </div>
+                        <div>
+                        <span className="font-bold">Resell Price:</span>{" "}
+                        {book?.resellPrice? <>{book?.resellPrice}</> : "No Data"} <br/>
+                        </div>
+                        
                     </div>
 
 

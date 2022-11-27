@@ -37,11 +37,11 @@ const SelerCard = ({sellers,setVarify,setDeleteData,tloadign}) => {
             </div>
           </div></td>
             <td>{
-                s?.varified ? "Varified" : "Unvarified"
+                  s?.admin ? "Admin":  s?.varified ? "Varified" : "Unvarified"
                 }</td>
             <td>
             <label className={`btn btn-primary mx-3 btn-xs ${s?.varified ? "btn-disabled":""}`} htmlFor="varify" onClick={()=>setVarify(s)}>{tloadign ? <SmallSpinner></SmallSpinner>: s?.varified ? "Verified":"Verify"}</label>
-            <label className={`btn btn-xs`} onClick={()=>setDeleteData(s)} htmlFor="deleteSeller">{tloadign || adminLoading? <SmallSpinner></SmallSpinner>: "Delete"}</label>
+            <label className={`btn btn-xs ${s.admin ? "btn-disabled":""}`} onClick={()=>setDeleteData(s)} htmlFor="deleteSeller">{tloadign || adminLoading? <SmallSpinner></SmallSpinner>: "Delete"}</label>
             </td>
             </tr>)
             

@@ -45,7 +45,7 @@ const Products = () => {
     
     
     return (
-        <div className='max-w-screen-xl mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center'>
+        <div className='max-w-screen-xl mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center my-10'>
            {
             data?.map(d=><SingleProductCard key={d._id} data={d} setBook={setBook} setReport={setReport}></SingleProductCard>)
            }

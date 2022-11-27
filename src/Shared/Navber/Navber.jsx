@@ -80,8 +80,11 @@ const Navber = () => {
             seller || admin ? <><NavLink to={"/dashboard/addproduct"}><Navbar.Link>Add Product</Navbar.Link></NavLink>
             <NavLink to={"/dashboard/addproduct"}><Navbar.Link>My Products</Navbar.Link></NavLink></>:""
           }
-          <NavLink to={"/dashboard"}><Navbar.Link>Dashboard</Navbar.Link></NavLink>
-           <NavLink to={'/dashboard/myorders'}><Navbar.Link >My Orders</Navbar.Link></NavLink>
+         {
+          seller || admin || user?.uid ? <> <NavLink to={"/dashboard"}><Navbar.Link>Dashboard</Navbar.Link></NavLink><NavLink to={'/dashboard/myorders'}><Navbar.Link >My Orders</Navbar.Link></NavLink></>:""
+
+         }
+           
           <NavLink to={'/blog'}><Navbar.Link href="/navbars">Blog</Navbar.Link></NavLink>
          
           <Navbar.Link>  <label
