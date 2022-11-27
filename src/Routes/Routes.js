@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import BigSpinner from "../Components/BigSpinner";
 import HomeLayout from "../Home/HomeLayout/HomeLayout";
 import Homepage from "../Home/HomeLayout/HomePage/Homepage";
 import Products from "../Home/HomeLayout/HomePage/Products/Products";
@@ -13,6 +14,8 @@ import Login from "../Pages/Login/Login";
 import MyOrders from "../Pages/MyOrders/MyOrders";
 import Payment from "../Pages/Payment/Payment";
 import Signup from "../Pages/SignUp/Signup";
+import AdminPrivetRoute from "../PrivetRoutes/AdminPrivetRoute";
+import UserPrivetRoute from "../PrivetRoutes/UserPrivetRoute";
 
 export const router = createBrowserRouter([
     // this is routes wtih navber and footer with it
@@ -34,23 +37,23 @@ export const router = createBrowserRouter([
             },
             {
                 path:"/brands/:name"
-                ,element:<Products></Products>,
+                ,element:<UserPrivetRoute><Products></Products></UserPrivetRoute>,
                 loader: ({params})=>fetch(`${process.env.REACT_APP_server}/brand?name=${params.name}`)
             },
             {
                 path:"/myorders",
-                element: <MyOrders></MyOrders>
+                element: <UserPrivetRoute><MyOrders></MyOrders></UserPrivetRoute>
             },
             {
                 path:'/payment/:oid',
-                element:<Payment></Payment>,
+                element:<UserPrivetRoute><Payment></Payment></UserPrivetRoute>,
                 loader: ({params})=>fetch(`${process.env.REACT_APP_server}/order/${params.oid}`)
             }
         ]
     },
     {
         path:'/dashboard'
-        ,element:<DashLayout></DashLayout>
+        ,element:<UserPrivetRoute><DashLayout></DashLayout></UserPrivetRoute>
         ,errorElement:<Error></Error>,
         children:[
             {
@@ -64,15 +67,15 @@ export const router = createBrowserRouter([
             },
             {
                path:'/dashboard/allsellers',
-               element:<AllSellers></AllSellers>
+               element:<AdminPrivetRoute><AllSellers></AllSellers></AdminPrivetRoute>
             }
             ,{
                 path: '/dashboard/reported_items',
-                element:<ReportedItems></ReportedItems>
+                element:<AdminPrivetRoute><ReportedItems></ReportedItems></AdminPrivetRoute>
             }
             ,{
                 path:'/dashboard/allbuyers'
-                ,element: <AllBuyers></AllBuyers>
+                ,element: <AdminPrivetRoute><AllBuyers></AllBuyers></AdminPrivetRoute>
             }
         ]
     }

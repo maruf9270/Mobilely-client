@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import BigSpinner from '../../Components/BigSpinner';
 import SmallSpinner from '../../Components/SmallSpinner';
 import { UserContext } from '../../Contexts/AuthContexts';
 import OrderTable from './Components/OrderTable';
@@ -17,9 +18,9 @@ const MyOrders = () => {
     })
     console.log(myOrders);
     return (
-        <div className='bg-slate-300 max-w-screen-xl mx-auto p-5 '>
+        <div className=' max-w-screen-xl mx-auto p-5  min-h-[600px] '>
            {
-            isLoading ? <SmallSpinner></SmallSpinner>:  <OrderTable myOrders={myOrders}></OrderTable>
+            isLoading ? <BigSpinner></BigSpinner>:  <OrderTable myOrders={myOrders}></OrderTable>
            }
           
 

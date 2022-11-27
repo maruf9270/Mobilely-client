@@ -1,8 +1,12 @@
-import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import { UserContext } from "../../../Contexts/AuthContexts";
+import { useAdmin } from "../../../Hooks/useAdmin";
 import Navber from "../../../Shared/Navber/Navber";
 
 const DashLayout = () => {
+  const {user} = useContext(UserContext)
+  const [admin,adminLoading] = useAdmin(user?.email)
   return (
     <div className="max-w-screen-xl mx-auto">
       <Navber></Navber>
@@ -18,16 +22,18 @@ const DashLayout = () => {
           </div>
           <div className="drawer-side">
             <label htmlFor="dashboardDrawer" className="drawer-overlay"></label>
-            <ul className="menu p-4 w-80 rounded-md text-base-content bg-slate-600 ">
+            <ul className="menu p-4 w-80 rounded-md text-base-content border border-stone-200 shadow-lg">
               {/* <!-- Sidebar content here --> */}
              
               <li>
-               <NavLink to={'/dashboard'}>My Products</NavLink>
+               <Link to={'/dashboard'} >My Products</Link>
               </li>
               <li>
-                <NavLink to={'/dashboard/addproduct'}>Add Product</NavLink>
+                <NavLink    to={'/dashboard/addproduct'}>Add Product</NavLink>
               </li>
-              <li>
+              {
+                admin ? <>
+                <li>
                 <NavLink to={'/dashboard/allsellers'}>All Sellers</NavLink>
               </li>
               <li>
@@ -35,7 +41,8 @@ const DashLayout = () => {
               </li>
               <li>
                 <NavLink to={'/dashboard/reported_items'}>Reported Items</NavLink>
-              </li>
+              </li></>:""
+              }
             </ul>
           </div>
         </div>

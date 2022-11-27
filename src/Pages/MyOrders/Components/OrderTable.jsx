@@ -5,8 +5,8 @@ import TableData from './TableData';
 const OrderTable = ({myOrders}) => {
   
     return (
-        <div className="overflow-x-auto w-full">
-  <table className="table w-full">
+        <div className="overflow-x-auto w-full border border-slate-400 rounded-lg">
+  <table className="table w-full ">
    
     <thead>
       <tr>

@@ -7,6 +7,7 @@ import Smodal from '../../../Components/Smodal';
 import { toast } from 'react-toastify';
 import DeletConfirm from './Components/DeletConfirm';
 import EditModal from './Components/EditModal';
+import BigSpinner from '../../../Components/BigSpinner';
 
 const MyProducts = () => {
     const {user} = useContext(UserContext)
@@ -75,9 +76,9 @@ const MyProducts = () => {
 
 
     return (
-        <div className='bg-slate-300 w-full grid md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1 p-5 gap-3 '>
+        <div className='w-full grid md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1 gap-3  p-5 h-full min-h-100vh '>
             {
-               isLoading ? <SmallSpinner></SmallSpinner> : products?.map(p=><ProductCard key={p._id} data={p} setModaldata={setModaldata} setPid={setPid} setdeleteID={setdeleteID}></ProductCard>)
+               isLoading ? <BigSpinner></BigSpinner> : products.length > 0 ? products?.map(p=><ProductCard key={p._id} data={p} setModaldata={setModaldata} setPid={setPid} setdeleteID={setdeleteID}></ProductCard>): <p className='text-center font-bold text-2xl'>You do not have any product</p>
             }
            <Smodal setPid={setPid} handleAdvertisement={handleAdvertisement}></Smodal>
            <DeletConfirm setdeleteID={setdeleteID} handleDelete={handleDelete} ></DeletConfirm>

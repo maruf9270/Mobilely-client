@@ -34,7 +34,6 @@ const BuyerTable = ({buyers,setSeller}) => {
                 s?.varified ? "Varified" : "Unvarified"
                 }</td>
             <td>
-            <label className={`btn btn-primary mx-3 btn-xs ${s?.varified ? "btn-disabled":""}`} htmlFor="varify">Variefy</label>
             <label className='btn btn-xs' htmlFor="buyerDelete" onClick={()=>setSeller(s)}>Delete</label>
             </td>
             </tr>)
