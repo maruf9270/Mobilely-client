@@ -40,10 +40,7 @@ export const router = createBrowserRouter([
                 ,element:<UserPrivetRoute><Products></Products></UserPrivetRoute>,
                 loader: ({params})=>fetch(`${process.env.REACT_APP_server}/brand?name=${params.name}`)
             },
-            {
-                path:"/myorders",
-                element: <UserPrivetRoute><MyOrders></MyOrders></UserPrivetRoute>
-            },
+           
             {
                 path:'/payment/:oid',
                 element:<UserPrivetRoute><Payment></Payment></UserPrivetRoute>,
@@ -76,7 +73,11 @@ export const router = createBrowserRouter([
             ,{
                 path:'/dashboard/allbuyers'
                 ,element: <AdminPrivetRoute><AllBuyers></AllBuyers></AdminPrivetRoute>
-            }
+            },
+            {
+                path:"/dashboard/myorders",
+                element: <UserPrivetRoute><MyOrders></MyOrders></UserPrivetRoute>
+            },
         ]
     }
 

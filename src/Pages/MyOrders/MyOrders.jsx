@@ -11,7 +11,7 @@ const MyOrders = () => {
 
     const {data: myOrders=[],isLoading} = useQuery({
         queryKey:["MyOrders"],
-        queryFn: ()=>fetch(`${process.env.REACT_APP_server}/orders/${emaeil}`)
+        queryFn: ()=>fetch(`${process.env.REACT_APP_server}/orders/${emaeil}`,{headers:{token: localStorage.getItem("token")}})
                         .then(res=>res.json())
         ,
         enabled: !!emaeil

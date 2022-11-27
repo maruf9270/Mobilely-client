@@ -12,7 +12,7 @@ const AllSellers = () => {
     // Fetching all the sellers 
     const {data: sellers=[],isLoading,isError,refetch} =useQuery({
         queryKey:["sellers"],
-        queryFn: ()=>fetch(`${process.env.REACT_APP_server}/sellers`)
+        queryFn: ()=>fetch(`${process.env.REACT_APP_server}/sellers`,{headers:{ token: localStorage.getItem("token")}})
                     .then(res=>res.json())
     })
 
@@ -50,7 +50,7 @@ const AllSellers = () => {
        fetch(`${process.env.REACT_APP_server}/users/${DeletData._id}`,{
         method:"delete",
         headers:{
-            "token" : "Maruf"
+           token: localStorage.getItem('token')
         }
        })
        .then(res=>res.json())

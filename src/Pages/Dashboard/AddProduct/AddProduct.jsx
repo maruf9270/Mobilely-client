@@ -4,7 +4,7 @@ import AddServiceForm from './AddServiceForm';
 
 const AddProduct = () => {
     return (
-        <div className='bg-slate-300 w-full min-h-screen p-5'>
+        <div className='border border-stone-400 rounded-md w-full p-5'>
            <ProductAddingForm></ProductAddingForm>
         </div>
     );

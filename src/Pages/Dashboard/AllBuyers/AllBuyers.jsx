@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import BigSpinner from '../../../Components/BigSpinner';
 import BuyerTable from './BuyerTable';
 import DeleteConfermation from './DeleteConfermation';
 
@@ -17,7 +18,7 @@ const AllBuyers = () => {
         fetch(`${process.env.REACT_APP_server}/sellers/${Seller._id}`,{
             method:"delete",
             headers:{
-                "token": "Maruf"
+               token: localStorage.getItem('token')
             }
         })
         .then(res=>res.json())
@@ -31,8 +32,11 @@ const AllBuyers = () => {
         
     }
     return (
-        <div className='bg-slate-300 w-full md:p-5'>
-           <BuyerTable buyers={buyers} setSeller={setSeller} deleteBuyer={deleteBuyer}></BuyerTable>
+        <div className='border border-stone-300 w-[98%] md:p-5 rounded-md md:mx-4 sm:mx-auto'>
+               <h5 className=' text-center font-bold text-2xl my-6 '>All Buyers</h5>
+         {
+            isLoading ? <BigSpinner></BigSpinner>: <BuyerTable buyers={buyers} setSeller={setSeller} deleteBuyer={deleteBuyer}></BuyerTable>
+         }
            <DeleteConfermation setSeller={setSeller} Seller={Seller} deleteBuyer={deleteBuyer}></DeleteConfermation>
         </div>
     );

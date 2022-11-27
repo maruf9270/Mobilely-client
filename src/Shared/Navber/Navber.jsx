@@ -3,9 +3,16 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../../Contexts/AuthContexts";
+import logo from '../../Assets/logo.png'
+import { useAdmin } from "../../Hooks/useAdmin";
+import useSeller from "../../Hooks/useSeller";
 
 const Navber = () => {
-    const {user,logOut} = useContext(UserContext)
+  const {user,logOut} = useContext(UserContext)
+  const [admin,adminLoading] = useAdmin(user?.email)
+  const [seller,sellerLoading] = useSeller(user?.email)
+  
+   
     // Handling sign out
     const handlesignout = ()=>{
         logOut()
@@ -18,19 +25,23 @@ const Navber = () => {
   return (
     <div className="max-w-screen-xl w-full overflow-hidden mx-auto">
       <Navbar rounded={true}>
-        <Navbar.Brand href="https://flowbite.com/">
+        <Link to={'/'}>
+        
+        <Navbar.Brand>
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src={logo}
             className="mr-3 h-6 sm:h-9"
             alt="Flowbite Logo"
           />
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Flowbite
+            Mobilely
           </span>
-        </Navbar.Brand>
+        </Navbar.Brand></Link>
         <div className="flex md:order-2">
+      
          {
             user?.uid ? <>
+              <button className="btn btn-primary mx-3" onClick={handlesignout}>Sign Out</button>
              <Dropdown
             arrowIcon={false}
             inline={true}
@@ -50,14 +61,14 @@ const Navber = () => {
                 {user?.email}
               </span>
             </Dropdown.Header>
-            <Link to={'/dashboard'}><Dropdown.Item >Dashboard</Dropdown.Item></Link>
-            <Dropdown.Item>Settings</Dropdown.Item>
+            <NavLink to={'/dashboard'}><Dropdown.Item >Dashboard</Dropdown.Item></NavLink>
+            <NavLink to={'/blog'}><Dropdown.Item>Blog</Dropdown.Item></NavLink>
             <Dropdown.Item>Earnings</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item  onClick={handlesignout}>Sign Out</Dropdown.Item>
           </Dropdown>
           <Navbar.Toggle /></>
-          : ""
+          :   <Link className="btn btn-primary" to={'/login'}>Login</Link>
          }
         </div>
         <Navbar.Collapse className="z-50">
@@ -65,10 +76,14 @@ const Navber = () => {
             Home
           </Navbar.Link></NavLink>
           
-          <Link to={"/dashboard/addproduct"}><Navbar.Link>Add Product</Navbar.Link></Link>
-         <NavLink to={'/myorders'}><Navbar.Link href="/navbars">My Orders</Navbar.Link></NavLink>
-          <Navbar.Link href="/navbars">Pricing</Navbar.Link>
-          <Navbar.Link href="/navbars">Contact</Navbar.Link>
+          {
+            seller || admin ? <><NavLink to={"/dashboard/addproduct"}><Navbar.Link>Add Product</Navbar.Link></NavLink>
+            <NavLink to={"/dashboard/addproduct"}><Navbar.Link>My Products</Navbar.Link></NavLink></>:""
+          }
+          <NavLink to={"/dashboard"}><Navbar.Link>Dashboard</Navbar.Link></NavLink>
+           <NavLink to={'/dashboard/myorders'}><Navbar.Link >My Orders</Navbar.Link></NavLink>
+          <NavLink to={'/blog'}><Navbar.Link href="/navbars">Blog</Navbar.Link></NavLink>
+         
           <Navbar.Link>  <label
               htmlFor="dashboardDrawer"
               className="btn btn-primary drawer-button lg:hidden"

@@ -93,12 +93,12 @@ import { toast } from 'react-toastify';
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
-                    if (data.insertedId) {
+                  
+                  
                         setSuccess('Congrats! your payment completed');
                         setTransactionId(paymentIntent.id);
                         toast.success('Congrats! your payment completed',paymentIntent.id)
-                    }
+                   
                 })
         }
         setProcessing(false);
@@ -125,7 +125,7 @@ import { toast } from 'react-toastify';
                     }}
                 />
                 <button
-                    className='btn btn-sm mt-4 btn-primary'
+                    className='btn mt-4 btn-primary px-9 '
                     type="submit"
                     disabled={!stripe || !clientSecret || processing}>
                     Pay

@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../Contexts/AuthContexts";
 import format from 'date-fns/format'
+import SmallSpinner from "./SmallSpinner";
 
 const ProductAddingForm = () => {
+  const [loading, setloading] = useState(false)
     const {user} = useContext(UserContext)
     const navigate = useNavigate()
 
@@ -24,7 +26,7 @@ const ProductAddingForm = () => {
             method:"post",
             headers:{
                 "content-type":"application/json"
-                ,"token":"maruf"
+                ,token: localStorage.getItem("token")
             },
             body: JSON.stringify(props)
         })
@@ -32,11 +34,17 @@ const ProductAddingForm = () => {
         .then(data=>{
             toast.success("Product added successfully")
             navigate('/dashboard')
+            setloading(false)
         })
-        console.log(props);
+        .catch(err=>{
+          toast.error("Something went wrong");
+          setloading(false)
+        })
+
      }
     // handling form
     const handlesumbit = (e) =>{
+      setloading(true)
         e.preventDefault()
         const form = e.target
         const brand = form.brand.value;
@@ -89,6 +97,11 @@ const ProductAddingForm = () => {
                 used
             }
             send(product)
+        })
+        .catch(err=>{
+          console.log(err);
+          toast.error("Something went wrong")
+          setloading(false)
         })
 
        
@@ -144,7 +157,7 @@ const ProductAddingForm = () => {
             
 
            <div>
-           <div>
+           <div className="ml-4">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Resell Price</span>
@@ -175,9 +188,6 @@ const ProductAddingForm = () => {
                   <span className="label-text">Condition</span>
                 </label>
                 <select className="select select-bordered rounded-md font-bold" name="condition">
-                  <option disabled selected>
-                    Pick one
-                  </option>
                   <option>Excellent</option>
                   <option>Good</option>
                   <option>Fair</option>
@@ -226,6 +236,7 @@ const ProductAddingForm = () => {
                 className="file-input file-input-bordered w-full max-w-xs"
                 name="image"
                 accept="image/*"
+                required
             />
             </div>
             <div>
@@ -260,16 +271,7 @@ const ProductAddingForm = () => {
                 />
                 </div>
             </div>
-       {/* <div>
-       <div className='shadow-md rounded-md my-2 p-3 flex justify-between items-center'>
-                <div>
-                  <p className='block text-sm text-gray-500'>From</p>
-                  <DatePicker selected={new Date()} className='w-2/3' />
-                </div>
-
-                <CalendarIcon className='h5 w-5' />
-              </div>
-       </div> */}
+    
 
         {/* text area section starts */}
         <div className="form-control">
@@ -280,10 +282,11 @@ const ProductAddingForm = () => {
             className="textarea textarea-bordered h-24"
             placeholder="Description"
             name="description"
+            required
           ></textarea>
         </div>
         <div>
-            <button className="btn btn-primary my-5 mx-auto" type="submit">Add</button>
+            <button className={`btn  my-5 mx-auto ${loading ? "btn-disabled" : "btn-primary"}`} type="submit">{loading ? <SmallSpinner></SmallSpinner>:"Add"}</button>
         </div>
       </form>
     </div>

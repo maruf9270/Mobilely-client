@@ -23,7 +23,7 @@ const MyProducts = () => {
         queryKey:[`my_products${user?.email}`]
         ,queryFn: ()=>fetch(`${process.env.REACT_APP_server}/products/${user?.email}`,{
                     headers:{
-                        "token":"Maruf"
+                       token: localStorage.getItem('token')
                     }
                     })
                      .then(res=>res.json())
@@ -36,7 +36,7 @@ const MyProducts = () => {
         const id = pid._id
         fetch(`${process.env.REACT_APP_server}/advertise`,
         {method:"put"
-        ,headers:{"content-type":"application/json"}
+        ,headers:{"content-type":"application/json", token: localStorage.getItem("token")}
         ,body: JSON.stringify({id: id})})
         .then(res=>res.json())
         .then(data=>{
@@ -56,7 +56,7 @@ const MyProducts = () => {
             method:"delete",
             headers:{
                 "content-type":"application/json"
-                ,"token":"maruf"
+                ,token: localStorage.getItem('token')
             },
             body: JSON.stringify({id:deleteID._id})
         })

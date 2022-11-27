@@ -82,8 +82,6 @@ const Signup = () => {
       })
     .then(res=>res.json())
     .then(data=>{
-      console.log(data);
-      console.log(props);
         signout()
     })
     .catch(err=>{
@@ -166,7 +164,7 @@ const Signup = () => {
 
         
         }
-        console.log(user);
+      
         fetch(`${process.env.REACT_APP_server}/google`,{
           method: "put",
           headers:{
@@ -176,16 +174,16 @@ const Signup = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-          console.log(data);
+          
           toast.success("Signed up successfully")
-          navigate('/')
+          navigate('/login')
         })
       })
 
     }
     return (
         <div>
-            <div className="sm:w-[50vw] mx-auto w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800 shadow-md shadow-slate-300">
+            <div className="my-10 sm:w-[50vw] mx-auto w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800 shadow-md shadow-slate-300">
         <h1 className="text-2xl font-bold text-center">Login</h1>
         <form
           action=""
@@ -268,12 +266,13 @@ const Signup = () => {
               required
               placeholder="E-Mail"
               className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-violet-600"
+              
             
             />
           </div>
 
         {/* Option select section */}
-        <select name="option" id="option" required>
+        <select name="option" id="option" className='w-52 rounded border border-stone-300' required>
             <option value="buyer" className='default'>Buyer</option>
             <option value="seller">Seller</option>
         </select>

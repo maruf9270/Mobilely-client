@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SmallSpinner from '../../../Components/SmallSpinner';
+import { UserContext } from '../../../Contexts/AuthContexts';
+import { useAdmin } from '../../../Hooks/useAdmin';
 
 const SelerCard = ({sellers,setVarify,setDeleteData,tloadign}) => {
+  const {user} = useContext(UserContext)
+ 
+  const [admin,adminLoading] = useAdmin(user?.email)
   
     let index = 1
     return (
@@ -36,7 +41,7 @@ const SelerCard = ({sellers,setVarify,setDeleteData,tloadign}) => {
                 }</td>
             <td>
             <label className={`btn btn-primary mx-3 btn-xs ${s?.varified ? "btn-disabled":""}`} htmlFor="varify" onClick={()=>setVarify(s)}>{tloadign ? <SmallSpinner></SmallSpinner>: s?.varified ? "Verified":"Verify"}</label>
-            <label className='btn btn-xs' onClick={()=>setDeleteData(s)} htmlFor="deleteSeller">{tloadign ? <SmallSpinner></SmallSpinner>: "Delete"}</label>
+            <label className={`btn btn-xs`} onClick={()=>setDeleteData(s)} htmlFor="deleteSeller">{tloadign || adminLoading? <SmallSpinner></SmallSpinner>: "Delete"}</label>
             </td>
             </tr>)
             

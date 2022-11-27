@@ -89,7 +89,7 @@ const Login = () => {
 
     }
   return (
-      <div className=" mx-auto w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800 shadow-md shadow-slate-300">
+      <div className=" mx-auto w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800 shadow-md shadow-slate-300 my-10">
         <h1 className="text-2xl font-bold text-center">Login</h1>
         <form
           action=""

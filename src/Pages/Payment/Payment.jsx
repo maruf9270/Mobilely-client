@@ -32,10 +32,12 @@ const Payment = () => {
     //     appearance,
     //   };
     return (
-        <div>
+        <div className='max-w-screen-xl mx-auto min-h-[80vh]'>
+           <div className='lg:p-24 p-9 border border-stone-400 mt-6 rounded-lg'>
            <Elements stripe={stripePromise}>
             <CheckoutForm data={data}></CheckoutForm>
            </Elements>
+           </div>
         </div>
     );
 };

@@ -7,11 +7,10 @@ const DeletConfirm = ({setdeleteID,handleDelete}) => {
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <h3 className="font-bold text-lg">
-            Congratulations random Internet user!
+            Deleting Confermation
           </h3>
           <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
+           Are You Sure YOu Want to Delete This item ? 
           </p>
           <div className="modal-action">
             <label
