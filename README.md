@@ -1,9 +1,9 @@
 # Mobilely
 A Website for selling and purchasing used mobile phone
 
-Live Site [mobilely-50732.web.app](mobilely-50732.web.app).
-Admin Emial : Maruf@gmail.com
-Admin Password: 123456789
+* Live Site [mobilely-50732.web.app](mobilely-50732.web.app)
+ * Admin Email : Maruf@gmail.com
+ * Admin Password: 123456789
 
 ## Features
 
