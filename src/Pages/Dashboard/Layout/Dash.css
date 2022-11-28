@@ -1,0 +1,9 @@
+#dash{
+    background-color: transparent;
+}
+
+@media only screen and (max-width: 1000px){
+    #dash{
+        background-color: white;
+    }
+}

@@ -4,6 +4,7 @@ import { UserContext } from "../../../Contexts/AuthContexts";
 import { useAdmin } from "../../../Hooks/useAdmin";
 import useSeller from "../../../Hooks/useSeller";
 import Navber from "../../../Shared/Navber/Navber";
+import './Dash.css'
 
 const DashLayout = () => {
   const {user} = useContext(UserContext)
@@ -31,7 +32,7 @@ const DashLayout = () => {
           </div>
           <div className="drawer-side">
             <label htmlFor="dashboardDrawer" className="drawer-overlay"></label>
-            <ul className="menu p-4 w-80 rounded-md text-base-content border border-stone-200 shadow-lg sm:bg-base-100 lg:bg-transparent ">
+            <ul className="menu p-4 w-80 rounded-md text-base-content border border-stone-200 shadow-lg sm:bg-base-100 lg:bg-transparent " id="dash">
               {/* <!-- Sidebar content here --> */}
              
               {
