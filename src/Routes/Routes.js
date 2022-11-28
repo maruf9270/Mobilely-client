@@ -3,6 +3,7 @@ import BigSpinner from "../Components/BigSpinner";
 import HomeLayout from "../Home/HomeLayout/HomeLayout";
 import Homepage from "../Home/HomeLayout/HomePage/Homepage";
 import Products from "../Home/HomeLayout/HomePage/Products/Products";
+import Blog from "../Pages/Blog/Blog";
 import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../Pages/Dashboard/All_sellsers/AllSellers";
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
                 path:'/payment/:oid',
                 element:<UserPrivetRoute><Payment></Payment></UserPrivetRoute>,
                 loader: ({params})=>fetch(`${process.env.REACT_APP_server}/order/${params.oid}`)
+            },
+            {
+                path:'/blog',
+                element:<Blog></Blog>
             }
         ]
     },

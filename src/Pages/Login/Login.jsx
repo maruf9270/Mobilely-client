@@ -39,9 +39,6 @@ const Login = () => {
             setLogLoading(false)
              setLoggedMail(email)
             form.reset();
-            if(token){
-              navigate(from,{replace: true})
-             }
            
         })
         .catch(err=>{

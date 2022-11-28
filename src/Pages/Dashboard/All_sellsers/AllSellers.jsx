@@ -26,7 +26,8 @@ const AllSellers = () => {
        fetch(`${process.env.REACT_APP_server}/varify`,{
         method:"put",
         headers:{
-            "content-type":"application/json"
+            "content-type":"application/json",
+            token: localStorage.getItem("token")
         },
         body:JSON.stringify({id:varify._id})
        })

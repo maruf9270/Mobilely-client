@@ -8,7 +8,7 @@ import DeleteConfermation from './DeleteConfermation';
 const AllBuyers = () => {
     const {data: buyers=[],isLoading,refetch} = useQuery({
         queryKey:["buyers"],
-        queryFn: ()=>fetch(`${process.env.REACT_APP_server}/buyers`)
+        queryFn: ()=>fetch(`${process.env.REACT_APP_server}/buyers`,{headers:{token: localStorage.getItem("token")}})
                     .then(res=>res.json())
     })
 

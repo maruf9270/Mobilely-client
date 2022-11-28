@@ -63,7 +63,7 @@ const Navber = () => {
             </Dropdown.Header>
             <NavLink to={'/dashboard'}><Dropdown.Item >Dashboard</Dropdown.Item></NavLink>
             <NavLink to={'/blog'}><Dropdown.Item>Blog</Dropdown.Item></NavLink>
-            <Dropdown.Item>Earnings</Dropdown.Item>
+            
             <Dropdown.Divider />
             <Dropdown.Item  onClick={handlesignout}>Sign Out</Dropdown.Item>
           </Dropdown>
