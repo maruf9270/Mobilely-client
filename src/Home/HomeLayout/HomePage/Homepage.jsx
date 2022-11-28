@@ -39,7 +39,7 @@ const Homepage = () => {
            </div>
 
            <h2 className='font-bold text-3xl my-5'>Products:</h2>
-           <div className='grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+           <div className='grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center justify-items-center'>
             {
                 ploading ? <BigSpinner></BigSpinner> : products.length > 0 ? products.map(p=><Singleproducthome key={p._id} data={p}></Singleproducthome>):""
             }

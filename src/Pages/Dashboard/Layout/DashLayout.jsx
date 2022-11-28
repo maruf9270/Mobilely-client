@@ -31,7 +31,7 @@ const DashLayout = () => {
           </div>
           <div className="drawer-side">
             <label htmlFor="dashboardDrawer" className="drawer-overlay"></label>
-            <ul className="menu p-4 w-80 rounded-md text-base-content border border-stone-200 shadow-lg md:bg-transparent sm:bg-white ">
+            <ul className="menu p-4 w-80 rounded-md text-base-content border border-stone-200 shadow-lg sm:bg-base-100 lg:bg-transparent ">
               {/* <!-- Sidebar content here --> */}
              
               {
