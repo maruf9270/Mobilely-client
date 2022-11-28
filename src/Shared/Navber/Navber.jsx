@@ -87,12 +87,7 @@ const Navber = () => {
            
           <NavLink to={'/blog'}><Navbar.Link href="/navbars">Blog</Navbar.Link></NavLink>
          
-          <Navbar.Link>  <label
-              htmlFor="dashboardDrawer"
-              className="btn btn-primary drawer-button lg:hidden"
-            >
-              Open drawer
-            </label></Navbar.Link>
+         
         </Navbar.Collapse>
       </Navbar>
     </div>

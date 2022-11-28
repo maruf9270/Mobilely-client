@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import BigSpinner from '../Components/BigSpinner';
 import { UserContext } from '../Contexts/AuthContexts';
 
 const UserPrivetRoute = ({children}) => {
     const navigate = useNavigate()
+    let location = useLocation();
     const {user,loading} = useContext(UserContext);
     if(loading ){
         return <BigSpinner></BigSpinner>
@@ -19,7 +20,7 @@ const UserPrivetRoute = ({children}) => {
         </div>
     );
     else{
-        return navigate('/login')
+        return <Navigate to="/login" state={{ from: location }} replace />;
     }
 };
 

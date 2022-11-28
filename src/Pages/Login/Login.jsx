@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {toast } from 'react-toastify';
 import SmallSpinner from "../../Components/SmallSpinner";
@@ -24,9 +24,11 @@ const Login = () => {
     // Handling jwt after login
     const [loggedMail, setLoggedMail] = useState(null)
     const [token]= useJwt(loggedMail)
-   if(token){
+  
+
+  useEffect(()=>{ if(token){
     navigate(from,{replace: true})
-   }
+   }},[token])
 
     // Handling email login 
     const login = (email,password,form) =>{
@@ -37,6 +39,9 @@ const Login = () => {
             setLogLoading(false)
              setLoggedMail(email)
             form.reset();
+            if(token){
+              navigate(from,{replace: true})
+             }
            
         })
         .catch(err=>{
@@ -65,6 +70,7 @@ const Login = () => {
 
             toast.success("A Password reset link has been sent to your Email")
             setLogLoading(false)
+            
         
         })
         .catch(err=>{
@@ -79,7 +85,9 @@ const Login = () => {
         signWithGoogle()
         .then(res=>{
             toast.success("Logged in successfully")
-            navigate(from,{replace: true})
+            if(token){
+              navigate(from,{replace: true})
+             }
           
         })
         .catch(err=>{

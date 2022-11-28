@@ -3,7 +3,7 @@ import { Button, Card } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 
 const SingleProductCard = ({ data, setBook,setReport, handleReport }) => {
-  console.log(data);
+
   const [seller, setData] = useState([]);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_server}/product/seller/${data.user.email}`)

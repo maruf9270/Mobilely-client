@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react"
 
 const useSeller =(email)=>{
-    const [seller,setSeller] = useState(true)
+    const [seller,setSeller] = useState(false)
     const [sellerLoading,setSellerLoading] = useState(false)
+
   
        useEffect(()=>{
         setSellerLoading(true)
-        fetch(`${process.env.REACT_APP_server}/sellerverify/:${email}`,{
+        fetch(`${process.env.REACT_APP_server}/sellerverify/${email}`,{
           headers:{
+            "content-type" : "application/json",
               token: localStorage.getItem("token")
           }
   
@@ -17,7 +19,7 @@ const useSeller =(email)=>{
           setSeller(data.seller)
           setSellerLoading(false)
         })
-     
+        .catch(err=>console.log(err))
        },[email])
     return [seller,sellerLoading]
 
