@@ -44,8 +44,8 @@ const BookingConfirmModal = ({ book, setBook, ConfirmBooking }) => {
             toast.error(data.message)
            }
            
-           setBook(null)
-           form.reset()
+          //  setBook(null)
+          //  form.reset()
         })
         .catch(err=>{
             console.log(err);
@@ -152,21 +152,28 @@ const BookingConfirmModal = ({ book, setBook, ConfirmBooking }) => {
 
 
                     <div className="modal-action">
+            
+            <label htmlFor="bookingConfirm">
             <button
               htmlFor="bookingConfirm"
               className={`btn btn-primary ${!disabe ? "" : "btn-disabled"}`}
               onClick={ConfirmBooking}
+
               
             >
                 Confirm
              
             </button>
+            </label>
+
             <label
               htmlFor="bookingConfirm"
               className="btn"
               onClick={handleCalcel}
             >
-              Cancel
+              {
+                !disabe ? "Cancel" : "Close"
+              }
             </label>
           </div>
           </form>
