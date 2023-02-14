@@ -1,0 +1,65 @@
+{
+    "styyle":{
+        "bg":"#000000",
+        "text": "#FFFFFF",
+
+
+    }
+    ,
+    "style":{
+        "bg":"#034ea2",
+        "text": "#FFFFFF"
+
+
+    }
+    ,
+    "style":{
+        "bg":"#124191",
+        "text": "#FFFFFF",
+
+
+    }
+    ,
+    "style":{
+        "bg":"#FF6900",
+        "text": "#FFFFFF",
+
+
+    }
+    ,
+    "style":{
+        "bg":"#FF0000",
+        "text": "#FFFFFF",
+
+
+    }
+    ,
+    "style":{
+        "bg":"#1EA366",
+        "text": "#FFFFFF"
+
+
+    }
+    ,
+
+    "style":{
+        "bg":"#5c92fa",
+        "text": "#FFFFFF"
+
+
+    }
+    ,"styyle":{
+        "bg":"#0072B8",
+        "text": "#FFFFFF",
+
+
+    }
+    ,
+    "styyle":{
+        "bg":"#FFFFFF",
+        "text": "#000000",
+
+
+    }
+    ,
+}
